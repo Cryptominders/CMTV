@@ -299,11 +299,11 @@ p {
 </div>
 
 <nav class="sidebar">
-  <a href="#quienes-somos">Quiénes Somos</a>
-  <a href="#que-es-cmtv">Qué es CMTV</a>
-  <a href="#espacios">Espacios</a>
-  <a href="#token-cmt">Token CMT</a>
-  <a href="#contacto">Contacto</a>
+  <a href="#quienes-somos" onclick="toggleMenu()">Quiénes Somos</a>
+  <a href="#que-es-cmtv" onclick="toggleMenu()">Qué es CMTV</a>
+  <a href="#espacios" onclick="toggleMenu()">Espacios</a>
+  <a href="#token-cmt" onclick="toggleMenu()">Token CMT</a>
+  <a href="#contacto" onclick="toggleMenu()">Contacto</a>
 </nav>
 
 <div class="content">
@@ -371,6 +371,17 @@ document.addEventListener('DOMContentLoaded', function() {
     section.style.transform = 'translateY(50px)';
     section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
     observer.observe(section);
+  });
+
+  // Add smooth scrolling to anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
   });
 });
 
