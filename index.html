@@ -1,4 +1,4 @@
-<html><head><base href="https://www.youtube.com/@cryptomindersesp">
+<html><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CryptoMinders - Canal 24/7 de YouTube</title>
@@ -343,9 +343,21 @@ p {
 
 <script>
 function toggleMenu() {
-  document.querySelector('.sidebar').classList.toggle('active');
-  document.querySelector('.content').style.marginLeft = document.querySelector('.sidebar').classList.contains('active') ? '250px' : '0';
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('active');
+  document.querySelector('.content').style.marginLeft = sidebar.classList.contains('active') ? '250px' : '0';
 }
+
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href');
+    document.querySelector(targetId).scrollIntoView({
+      behavior: 'smooth'
+    });
+    toggleMenu();
+  });
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('section');
